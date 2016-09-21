@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<h1>Killed By Police 2016</h1>
+<h3>
+<a href="#">2013</a> -
+<a href="#">2014</a> -
+<a href="#">2015</a> -
+2016
+</h3>
+<h5>Since May 1, 2013</h5>
+<table class="pure-table pure-table-striped">
+    <thead>
+      <tr><th style="text-align: center;">#</th><th>Date</th><th>ST</th><th>G/R</th><th>Name, Age</th><th>*</th><th style="width: 4.5em">KBP Link</th><th>Media Links</th></tr>
+    </thead>
+    <tbody>
+        {% for vic in site.data.victims %}
+          <tr>
+            <td data-th="#">{{forloop.rindex}}</td>
+            <td data-th="Date">{{vic.date}}</td>
+            <td data-th="State">{{vic.state}}</td>
+            <td data-th="Gender/Race">{{vic.gender-race}}</td>
+            <td data-th="Name">{% if vic.img %}<a href="http://www\.killedbypolice\.net/victims/{{vic.img}}.jpg">{{vic.name}}</a>{% else %}{{vic.name}}{% endif %}</td>
+            <td data-th="Cause">{{vic.cause}}</td>
+            <td data-th="KBP Post"><a href='https://facebook.com/permalink.php?story_fbid='{{vic.KBP-link}}'&id=956901834375343'>KBP post</a></td>
+            <td data-th="Media Links"><ul>
+              {% for link in vic.media-links %}
+                <li><a href="{{link.url}}">{{link.title}}</a></li>
+              {% endfor %}
+            </ul></td>
+          </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+  var links = document.querySelectorAll('a');
+  for (var i = 0; i < links.length; i++) {
+    var link = links[i];
+    link.target = "new";
+  }
+</script>

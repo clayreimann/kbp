@@ -1,0 +1,6 @@
+# Site settings
+title: Killed By Police
+description: A prototype of responsive data design
+
+# Build settings
+markdown: kramdown
